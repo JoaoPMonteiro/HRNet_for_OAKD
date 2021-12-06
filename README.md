@@ -3,7 +3,7 @@
 ---
 **intro**
 
-assorted routines to fetch [MMPose](https://github.com/open-mmlab/mmpose)'s pretrained [HRnet](https://github.com/HRNet/HRNet-Human-Pose-Estimation) 2D pose estimations model and convert it to onnx and myriad X blob formats
+assorted routines to fetch [MMPose](https://github.com/open-mmlab/mmpose)'s pretrained [HRnet](https://github.com/HRNet/HRNet-Human-Pose-Estimation) 2D pose estimation model and convert it to onnx and myriad X blob formats
 
 ---
 **overview of the main steps to replicate procedure**
