@@ -60,9 +60,15 @@ if [ ! -f ./$DIR_TLS/pytorch2onnx.py ]; then
     wget -c https://raw.githubusercontent.com/open-mmlab/mmpose/master/tools/deployment/pytorch2onnx.py -O $DIR_TLS/pytorch2onnx.py
 fi
 
+if [ ! -f ./$DIR_TLS/remove_initializer_from_input.py ]; then   
+    wget -c https://raw.githubusercontent.com/microsoft/onnxruntime/master/tools/python/remove_initializer_from_input.py -O $DIR_TLS/remove_initializer_from_input.py
+fi
+
 if [ ! -f ./$DIR_NNX/$FILENAME_2D.onnx ]; then   
     python ./$DIR_TLS/pytorch2onnx.py $DIR_CNFG/$FILENAME_2D.py $DIR_PTH/$FILENAME_2D.pth --shape $SHAPE2D\
         --verify --show --output-file $DIR_NNX/$FILENAME_2D.onnx --opset-version ${VERSION}
+
+    python ./$DIR_TLS/remove_initializer_from_input.py --input $DIR_NNX/$FILENAME_2D.onnx --output $DIR_NNX/$FILENAME_2D.onnx
 fi
 
 # -------------------------------------------------------
